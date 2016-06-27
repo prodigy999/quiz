@@ -11,37 +11,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import quiz.entity.Quiz;
+import quiz.service.QuizService;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "ConnexionServlet", urlPatterns = {"/login"})
-public class ConnexionServlet extends HttpServlet {
+@WebServlet(name = "AjoutQuizServlet", urlPatterns = {"/ajout_quiz"})
+public class AjoutQuizServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-            req.getSession().removeAttribute("UtilConnecte");
-            String log = req.getParameter("login");
-            String mdp = req.getParameter("motDePasse");
-            
-            if (log.equals("admin") && mdp.equals("admin")){
-                req.getSession().setAttribute("UtilConnecte", "admin");
-                
-                
-            }
-            
-            resp.sendRedirect("quiz_page");
-         
-    }
+        Quiz newQuiz = new Quiz();
+        newQuiz.setNom(req.getParameter("nom"));
+        
+        new QuizService().ajouterQuiz(newQuiz);
+        
+        resp.sendRedirect("ajout_questions");
 
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        
-        req.getRequestDispatcher("connexion.jsp").forward(req, resp);
-        
+        req.getRequestDispatcher("ajout_quiz.jsp").forward(req, resp);
     }
+    
+    
 
 }

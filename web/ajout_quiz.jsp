@@ -15,17 +15,13 @@
             <c:import url="_MENU.jsp"/>
         </div>
         <div class="contenu">
-            <h1>Log in</h1>
+            <h1>Ajouter Quiz</h1>
             <form method="post">
-                <label for="login">Login :</label>
-                <input name="login" type="text" width="150">
+                <label for="nom">Nom :</label>
+                <input name="nom" type="text" width="150">
                 <br />
                 <br />
-                <label for="motDePasse">Mot de Passe :</label>
-                <input name="motDePasse" type="password" width="400">
-                <br />
-                <br />
-                <input type="submit" value="Valider">
+                <input type="submit">
             </form>
         </div>
         <div class="pied">
@@ -33,4 +29,3 @@
         </div>
     </body>
 </html>
-

@@ -6,7 +6,6 @@
 package quiz.servlet;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,17 +18,19 @@ import quiz.service.QuizService;
  *
  * @author admin
  */
-@WebServlet(name = "QuizServlet", urlPatterns = {"/quiz_page"})
-public class QuizServlet extends HttpServlet {
+@WebServlet(name = "DetailQuizServlet", urlPatterns = {"/detail_quiz"})
+public class DetailQuizServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-       List<Quiz> quizRecherche = new QuizService().listerTous();
-       req.setAttribute("quizs", quizRecherche);
-       req.getRequestDispatcher("quiz_page.jsp").forward(req, resp);
-        
+       long IDQuiz = Long.parseLong(req.getParameter("idQuiz"));
+       Quiz detailQuiz = new QuizService().rechercheParID(IDQuiz);
+       req.setAttribute("quiz", detailQuiz);
+       req.getRequestDispatcher("detail_quiz.jsp").forward(req, resp);
     }
+    
+    
 
     
 

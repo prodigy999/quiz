@@ -28,7 +28,7 @@ public class QuizDAO {
         EntityManager em = Persistence.createEntityManagerFactory("QuizPU").createEntityManager();
         return em.find(Quiz.class, id);
     }
-
+    
     public void ajouterQuiz(Quiz q) {
 
         EntityManager em = Persistence.createEntityManagerFactory("QuizPU").createEntityManager();
