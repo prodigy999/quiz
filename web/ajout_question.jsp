@@ -26,24 +26,19 @@
                 <br />
                 <br />
                 <label for="rep1">Réponse 1 :</label>
-                <input name="rep1" type="text" width="150">
+                <input name="rep1" type="text" width="150"><input name="repCorrecte" type="radio" checked="checked" value="1">
                 <br />
                 <br />
                 <label for="rep2">Réponse 2 :</label>
-                <input name="rep2" type="text" width="150">
+                <input name="rep2" type="text" width="150"><input name="repCorrecte" type="radio" value="2">
                 <br />
                 <br />
                 <label for="rep3">Réponse 3 :</label>
-                <input name="rep3" type="text" width="150">
+                <input name="rep3" type="text" width="150"><input name="repCorrecte" type="radio" value="3">
                 <br />
                 <br />
                 <label for="rep4">Réponse 4 :</label>
-                <input name="rep4" type="text" width="150">
-                <br />
-                <br />
-                <label for="repCorrecte">Réponse correcte :</label>
-                <input name="repcorrect" type="text" width="150">
-                    
+                <input name="rep4" type="text" width="150"><input name="repCorrecte" type="radio" value="4">
                 <br />
                 <br />
                 <input type="submit" value="Ajouter">

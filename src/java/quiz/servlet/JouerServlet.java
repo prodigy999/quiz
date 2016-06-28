@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package quiz.servlet;
 
 import java.io.IOException;
@@ -19,20 +14,20 @@ import quiz.service.QuestionService;
  *
  * @author admin
  */
-@WebServlet(name = "DetailQuizServlet", urlPatterns = {"/detail_quiz"})
-public class DetailQuizServlet extends HttpServlet {
+@WebServlet(name = "JouerServlet", urlPatterns = {"/jouer_quiz"})
+public class JouerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+       
        long IDQuiz = (long) req.getSession().getAttribute("IdQuizActuel");
        List<Question> quest = new QuestionService().listerParId(IDQuiz);
+       
        req.setAttribute("quiz", quest);
-       req.getRequestDispatcher("detail_quiz.jsp").forward(req, resp);
+       
+       req.getSession().setAttribute("ordreQuest", 0);
+       req.getSession().setAttribute("score", 0);
+       
+       resp.sendRedirect("question_suivante");
     }
-    
-    
-
-    
-
 }

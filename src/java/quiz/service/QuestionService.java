@@ -15,6 +15,18 @@ import quiz.entity.Question;
  */
 public class QuestionService {
     
+    public List<Question> listerParId(long id) {
+
+        QuestionDAO dao = new QuestionDAO();
+        return dao.listerParId(id);
+    }
+    
+    public long nbrQuestParId(long id) {
+
+        QuestionDAO dao = new QuestionDAO();
+        return dao.nbrQuestParId(id);
+    }
+    
     public List<Question> listerTous() {
 
         QuestionDAO dao = new QuestionDAO();
@@ -26,7 +38,7 @@ public class QuestionService {
         QuestionDAO dao = new QuestionDAO();
         return dao.rechercheParID(id);
     }
-
+    
     public void ajouterQuestion(Question q) {
 
         new QuestionDAO().ajouterQuestion(q);

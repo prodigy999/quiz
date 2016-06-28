@@ -22,26 +22,22 @@ public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-            req.getSession().removeAttribute("UtilConnecte");
-            String log = req.getParameter("login");
-            String mdp = req.getParameter("motDePasse");
-            
-            if (log.equals("admin") && mdp.equals("admin")){
-                req.getSession().setAttribute("UtilConnecte", "admin");
-                
-                
-            }
-            
-            resp.sendRedirect("quiz_page");
-         
+        req.getSession().removeAttribute("UtilConnecte");
+        String log = req.getParameter("login");
+        String mdp = req.getParameter("motDePasse");
+
+        if (log.equals("admin") && mdp.equals("admin")) {
+            req.getSession().setAttribute("UtilConnecte", "admin");
+        }
+
+        resp.sendRedirect("quiz_page");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-        
+
         req.getRequestDispatcher("connexion.jsp").forward(req, resp);
-        
+
     }
 
 }

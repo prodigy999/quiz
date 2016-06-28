@@ -22,17 +22,14 @@
                 </tr>
             </thead>
             <tbody>
+                <c:forEach items="${quizs}" var="quiz">
+                    <tr>
+                        <td><a href=mettre_en_session_quizz_act?id=${quiz.id}>${quiz.nom}</a></td>
+                    </tr>
+                </c:forEach> 
                 <c:if test="${UtilConnecte=='admin'}">
                         <td><a href="ajout_quiz">Ajouter Quiz</a></td>
                 </c:if>
-                <c:forEach items="${quizs}" var="quiz">
-                    <tr>
-                    <td><a href="detail_quiz?idQuiz=${quiz.id}">${quiz.nom}</a></td>
-                    <c:if test="${UtilConnecte=='admin'}">
-                        <td><a href="ajout_questions?idQuiz=${quiz.id}">Ajouter Qestions</a></td>
-                    </c:if>
-                    </tr>
-                </c:forEach>           
             </tbody>
         </table>
     </div>

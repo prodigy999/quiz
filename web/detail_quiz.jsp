@@ -18,16 +18,21 @@
         <table>
             <thead>
                 <tr>
-                    <th>Questions Quiz</th>
+                    <th>Détail question</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                 <td>
-                <c:forEach items="${quiz.questions}" var="quest">
-                    ${quest.ordre} ---> <a href="affiche_question?idQuestion=${quest.id}">${quest.titre}</a>
+                <c:forEach items="${quiz}" var="quest">
+                     ${quest.ordre} ---> ${quest.titre}
+                            
                     <br>
                 </c:forEach>
+                <a href="jouer_quiz"> Jouer</a>
+                <c:if test="${UtilConnecte=='admin'}">
+                        <a href="ajout_questions">Ajouter Qestions</a>
+                </c:if>
                 </td>
                 </tr>                
             </tbody>

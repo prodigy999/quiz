@@ -17,6 +17,18 @@ import quiz.entity.Question;
  */
 public class QuestionDAO {
     
+    public List<Question> listerParId(long id) {
+
+        EntityManager em = Persistence.createEntityManagerFactory("QuizPU").createEntityManager();
+        return em.createQuery("SELECT q FROM Question q WHERE q.quiz.id=:monid").setParameter("monid", id).getResultList();
+    }
+    
+    public long nbrQuestParId(long id) {
+
+        EntityManager em = Persistence.createEntityManagerFactory("QuizPU").createEntityManager();
+        return (long) em.createQuery("SELECT COUNT (q) FROM Question q WHERE q.quiz.id=:monid").setParameter("monid", id).getSingleResult();
+    }
+    
     public List<Question> listerTous() {
 
         EntityManager em = Persistence.createEntityManagerFactory("QuizPU").createEntityManager();
@@ -60,5 +72,7 @@ public class QuestionDAO {
 
         em.getTransaction().commit();
     }
+    
+    
     
 }

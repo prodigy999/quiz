@@ -29,7 +29,7 @@ public class AjoutQuizServlet extends HttpServlet {
         
         new QuizService().ajouterQuiz(newQuiz);
         
-        resp.sendRedirect("ajout_questions");
+        resp.sendRedirect("quiz_page");
 
     }
     @Override
