@@ -6,7 +6,7 @@
 package quiz.service;
 
 import java.util.List;
-import quiz.DAO.QuizDAO;
+import quiz.dao.QuizDAO;
 import quiz.entity.Quiz;
 
 /**
@@ -15,6 +15,7 @@ import quiz.entity.Quiz;
  */
 public class QuizService {
     
+     
     public List<Quiz> listerTous() {
 
         QuizDAO dao = new QuizDAO();

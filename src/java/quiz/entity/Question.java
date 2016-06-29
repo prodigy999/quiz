@@ -26,7 +26,7 @@ public class Question implements Serializable {
     private Long id;
     
     private String titre;
-    private byte ordre;
+    private int ordre;
     private String rep1;
     private String rep2;
     private String rep3;
@@ -45,7 +45,7 @@ public class Question implements Serializable {
         this.titre = titre;
     }
 
-    public byte getOrdre() {
+    public int getOrdre() {
         return ordre;
     }
 

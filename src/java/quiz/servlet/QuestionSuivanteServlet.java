@@ -26,20 +26,20 @@ public class QuestionSuivanteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        
        long iDQuiz = (long) req.getSession().getAttribute("IdQuizActuel");
-       int ordreQuest = (int) req.getSession().getAttribute("ordreQuest");
-       List <Question> quest = new QuestionService().nbrQuestParId(iDQuiz, ordreQuest);
-       int taille = quest.size();
-       req.setAttribute("quiz", quest);
+       int ordreDerniereQuestionRepondue = (int) req.getSession().getAttribute("ordreQuest");
        
+       Question questionSuivante = new QuestionService().rechercherQuestionSuivante(iDQuiz, ordreDerniereQuestionRepondue);
+       req.getSession().setAttribute("ordreQuest", questionSuivante.getOrdre());
        
-       if (quest.size() < 1){
-           
+       if (questionSuivante == null){
            resp.sendRedirect("quiz_page");
        }
        
-       else {
-          req.getRequestDispatcher("question_suivante.jsp").forward(req, resp); 
-       }
+       req.setAttribute("question", questionSuivante);
+       req.getRequestDispatcher("question_suivante.jsp").forward(req, resp);
+       
+          
+       
     }
     
     @Override
@@ -50,12 +50,17 @@ public class QuestionSuivanteServlet extends HttpServlet {
         
         Question quest = new QuestionService().rechercheParID(IDQuiz);
         
-        if (rep==quest.getNumRepCorrecte()); {
+        System.out.println("----------reponse----------------" + rep);
+        System.out.println("-----------reponseCorrecte---------------" + quest.getNumRepCorrecte());
+        System.out.println("-------------scoreavant-------------" + req.getSession().getAttribute("score"));
+        
+        if (rep==quest.getNumRepCorrecte()) {
+        
             int score = (int) req.getSession().getAttribute("score");
             req.getSession().setAttribute("score", score + 1 );
         }
         
-        req.getSession().setAttribute("ordreQuest", quest.getOrdre());
+        System.out.println("-------------scoreapres-------------" + req.getSession().getAttribute("score"));
         resp.sendRedirect("question_suivante");
     }
 }

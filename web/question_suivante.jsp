@@ -25,7 +25,6 @@
                     <tr>
                         <td>
                             <form method="post">
-                            <c:forEach items="${quiz}" var="question">
                             <label for="titre">${question.titre}</label>
                             <br />
                             <br />
@@ -41,7 +40,6 @@
                             <label for="rep4">${question.rep4}</label><input name="reponse" type="radio" value="4">
                             <br />
                             <br />
-                            </c:forEach>
                             <input type="submit" value="Suivant">
                             </form>
                         </td>
