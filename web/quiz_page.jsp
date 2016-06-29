@@ -24,7 +24,7 @@
             <tbody>
                 <c:forEach items="${quizs}" var="quiz">
                     <tr>
-                        <td><a href=mettre_en_session_quizz_act?id=${quiz.id}>${quiz.nom}</a></td>
+                        <td><a href="mettre_en_session_quizz_act?id=${quiz.id}">${quiz.nom}</a></td>
                     </tr>
                 </c:forEach> 
                 <c:if test="${UtilConnecte=='admin'}">

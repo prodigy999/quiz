@@ -54,13 +54,14 @@ public class QuestionSuivanteServlet extends HttpServlet {
         System.out.println("-----------reponseCorrecte---------------" + quest.getNumRepCorrecte());
         System.out.println("-------------scoreavant-------------" + req.getSession().getAttribute("score"));
         
-        if (rep==quest.getNumRepCorrecte()) {
+        if (rep==quest.getNumRepCorrecte()); {
         
             int score = (int) req.getSession().getAttribute("score");
             req.getSession().setAttribute("score", score + 1 );
         }
         
         System.out.println("-------------scoreapres-------------" + req.getSession().getAttribute("score"));
+        
         resp.sendRedirect("question_suivante");
     }
 }
