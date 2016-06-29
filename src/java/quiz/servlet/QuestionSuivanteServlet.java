@@ -25,13 +25,21 @@ public class QuestionSuivanteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        
-       long IDQuiz = (long) req.getSession().getAttribute("IdQuizActuel");
-       long nbrquest = new QuestionService().nbrQuestParId(IDQuiz);
+       long iDQuiz = (long) req.getSession().getAttribute("IdQuizActuel");
+       int ordreQuest = (int) req.getSession().getAttribute("ordreQuest");
+       List <Question> quest = new QuestionService().nbrQuestParId(iDQuiz, ordreQuest);
+       int taille = quest.size();
+       req.setAttribute("quiz", quest);
        
-       System.out.println("----------------------------" + nbrquest);
        
-       req.getRequestDispatcher("question_suivante.jsp").forward(req, resp);
+       if (quest.size() < 1){
+           
+           resp.sendRedirect("quiz_page");
+       }
        
+       else {
+          req.getRequestDispatcher("question_suivante.jsp").forward(req, resp); 
+       }
     }
     
     @Override

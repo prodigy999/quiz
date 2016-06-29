@@ -21,10 +21,11 @@ public class QuestionService {
         return dao.listerParId(id);
     }
     
-    public long nbrQuestParId(long id) {
+    public List <Question> nbrQuestParId(long id, int ordre) {
 
         QuestionDAO dao = new QuestionDAO();
-        return dao.nbrQuestParId(id);
+        
+        return dao.nbrQuestParId(id, ordre);
     }
     
     public List<Question> listerTous() {

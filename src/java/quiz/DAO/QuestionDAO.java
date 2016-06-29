@@ -23,10 +23,11 @@ public class QuestionDAO {
         return em.createQuery("SELECT q FROM Question q WHERE q.quiz.id=:monid").setParameter("monid", id).getResultList();
     }
     
-    public long nbrQuestParId(long id) {
+    public List <Question> nbrQuestParId(long id, int ordre) {
 
         EntityManager em = Persistence.createEntityManagerFactory("QuizPU").createEntityManager();
-        return (long) em.createQuery("SELECT COUNT (q) FROM Question q WHERE q.quiz.id=:monid").setParameter("monid", id).getSingleResult();
+        return em.createQuery("SELECT q FROM Question q WHERE q.quiz.id=:monid AND q.ordre>:monordre ORDER BY q.ordre")
+                .setParameter("monid", id).setParameter("monordre", ordre).getResultList();
     }
     
     public List<Question> listerTous() {
